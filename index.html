@@ -1,0 +1,177 @@
+﻿
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Programming Challenge</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            //Load in the data for the google line chart then call drawChart()
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            //Leaving these variables outside the function will allow us to access them later for toggling
+            var Mdata, Moptions, Mchart, view;
+            var rgdpToggle = true, unrateToggle = true;
+
+            //This is the main build function for the google chart
+            function drawChart() {
+                //here we create the data to be used and the view to be presented to the user
+                Mdata = google.visualization.arrayToDataTable(chartMaterial);
+                view = new google.visualization.DataView(Mdata);
+
+                //Settings such as borders, fonts, and colors for the graph, labels, and axes go here.
+                Moptions = {
+                    title: 'Real Gross Domestic Product "RGDP" and Unemployment rate over the last 10 years',
+                    legend: { position: 'bottom' },
+                    vAxis: { format: '#,###%' },
+                    backgroundColor: '#E4E4E4'
+                };
+
+                //This creates our chart and points it to the div with the id: 'Mixed_Chart'
+                Mchart = new google.visualization.LineChart(document.getElementById('Mixed_Chart'));
+                Mchart.draw(Mdata, Moptions);
+            }
+
+            //this function toggle the graph by looking at a series of flags, this system has three toggles:
+            // Show All (Starting Default), Show RGDP, and Show Unemployment Rate (cycling in that order)
+            function toggleGraph() {
+                if (unrateToggle) {
+                        view.setColumns([0, 1]);
+                        unrateToggle = false;
+                    } else if (rgdpToggle) {
+                        view.setColumns([0, 2]);
+                        rgdpToggle = false;
+                    } else {
+                        view.setColumns([0, 1, 2]);
+                        rgdpToggle = true;
+                        unrateToggle = true;
+                    }
+             //Once we have selected the columns to be set, we place the new view into the draw function with our previous options
+                    Mchart.draw(view, Moptions);
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <style>
+        p {
+            border: 1px solid powderblue;
+            font-family: Georgia, serfif;
+            font-size: 14pt;
+
+        }
+        h1{
+            font-family: Georgia, serif;
+            font-style: italic;
+            text-align: center;
+        }
+        div{
+            margin: auto auto;
+        }
+    </style>
+    <body>
+        <h1>iQcu Programmer Challenge
+        <br />Michael Hansen</h1>
+        <p>    <strong>Summary of work performed:</strong> I pulled the the data for the graph from the remote server at St. Louis using their FRED API. 
+        Once I pulled in the data, I converted it (into JSON) and then stored the sections I needed and discarded the rest. 
+        Finally, the data was uploaded into a Google Line Graph. The graph is able to toggle the data by selecting which sections are to be shown based on a set of flags. 
+        For a more technical view please view the comments in the HTML file. </p>
+        <script>
+            var UNRATE = []; //array for unemployment rate (formatted for google line charts)
+            var RGDP = [];   //array for Real Gross Domestic Product (formatted for google line charts)
+            var chartMaterial = []; //array for the merged UNRATE and RGDP for the Mixed Chart
+
+            //first we build a header block in our array
+            UNRATE[0] = ["Date", "Unemployment Rate"];
+
+            //next we pull in our JSON using a YQL encoded GET. See the Online YQL Console for encoding.
+            $.getJSON("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%20%22https%3A%2F%2Fapi.stlouisfed.org%2Ffred%2Fseries%2Fobservations%3Fseries_id%3DUNRATE%26observation_start%3D2007-01-01%26observation_end%3D2017-01-01%26api_key%3D2789c4d318db644e3b5523eb731bd171%22&format=json&diagnostics=true&callback=?", function (data) {
+
+                //The JSON object has a very long name so I'm gonna cast it down to something smaller.
+                var currentObject = data.query.results.body.observations.observation;
+
+                //Time to iterate over the object grabbing the pertinent data.
+                var i = 1;
+                while (currentObject) {
+                    //Date format is YYYY-MM-DD so splicing is simpler than using a regex here.
+                    year = currentObject.date.toString().slice(0, 4);
+                    month = currentObject.date.toString().slice(5, 7);
+                    day = currentObject.date.toString().slice(8, 10);
+
+                    //Converting our strings to ints and floats as appropriate.
+                    UNRATE[i] = [new Date(parseInt(year), parseInt(month), parseInt(day)), parseFloat(currentObject.value)]
+                    i++;
+
+                    //Our object is a series of nested objects, so we move deeper here by appending another ".observation"
+                    currentObject = currentObject.observation;
+                }
+
+                //This block is EXACTLY the same as the UNRATE block, except for the last command to merge.
+                RGDP[0] = ["Date", "Real Gross Domestic Product"];
+                $.getJSON("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%20%22https%3A%2F%2Fapi.stlouisfed.org%2Ffred%2Fseries%2Fobservations%3Fseries_id%3DA191RL1Q225SBEA%26observation_start%3D2007-01-01%26observation_end%3D2017-01-01%26api_key%3D2789c4d318db644e3b5523eb731bd171%22&format=json&diagnostics=true&callback=?", function (data) {
+                    var currentObject = data.query.results.body.observations.observation;
+                    var i = 1;
+                    while (currentObject) {
+                        year = currentObject.date.toString().slice(0, 4);
+                        month = currentObject.date.toString().slice(5, 7);
+                        day = currentObject.date.toString().slice(8, 10);
+                        RGDP[i] = [new Date(parseFloat(year), parseFloat(month), parseFloat(day)), parseFloat(currentObject.value)]
+                        i++;
+                        currentObject = currentObject.observation;
+                    }
+                    //Now that we have our RGDP and UNRATE arrays we can either make
+                    //single graphs or merge them for a composite graph. We're going to merge them
+                    merge(UNRATE, RGDP);
+                });
+            });
+
+            //
+            //Second Section for merging RGDP and UNRATE
+            //
+
+            function merge(urate, gdp) {
+                k = 1; // incrementor for RGDP array, because the dates won't match due to RGDP being updated quarterly
+                curgdp = 0; //This is the current GDP value to be placed into our merged array
+                chartMaterial[0] = ["Date", "Unemployment Rate", "RGDP"]; //Building a header row.
+
+                //Now we're gpoing to iterate over both arrays and merge where appropriate.
+                for (j = 1; j < urate.length; j++) {
+                    //If the date matches for the RGDP and the UNRATE we update the value and increment the RGDP counter
+                    if (k < gdp.length-1 && gdp[k][0].getTime() === urate[j][0].getTime()) {
+                        //making sure we didn't incrment too far and updating the GDP value
+                        if (gdp[k][1]) {
+                            curgdp = gdp[k][1];
+                        }
+                        k++;
+                    }
+                    //Merge the values into a single array, this duplicates the quarterly RGDP values across each month
+                    chartMaterial[j] = [
+                        urate[j][0],
+                        urate[j][1]*.01,
+                        curgdp*.01
+                    ]
+                }
+            }
+        </script>
+        <script>
+            //Just some code to collapse the graph's div container
+            jQuery(document).ready(function () {
+                jQuery('#toggleMChart').on('click', function (event) {
+                    jQuery('#Mixed_Chart').toggle('show');
+                });
+            });
+
+        </script>
+        <input type='button' id='toggleMChart' value='Show/Hide Chart'>
+        <button onclick="toggleGraph()">Toggle Series</button>
+        <div style="height:2px;"></div>
+        <div id="Mixed_Chart"></div>
+        <p style="width:300px;">Links to resources: <br />
+        <a href="https://developer.yahoo.com/yql/console/">YQL Console for Encoding</a>
+        <br /><a href="https://developers.google.com/chart/interactive/docs/gallery/linechart">Google Line Charts Docs</a>
+        <br /><a href="https://research.stlouisfed.org/docs/api/fred/">FRED API Docs</a></p>
+    </body>
+</html>
