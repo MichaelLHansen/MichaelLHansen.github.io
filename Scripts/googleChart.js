@@ -18,7 +18,7 @@ function drawChart() {
 
   //Settings such as borders, fonts, and colors for the graph, labels, and axes go here.
   Moptions = {
-    title: 'Real Gross Domestic Product "RGDP" and Unemployment rate over the last 10 years',
+    title: 'Real Gross Domestic Product "RGDP" and Unemployment Rate over the last 10 years',
     legend: { position: 'bottom' },
     vAxis: { format: '#,###%' },
     backgroundColor: '#E4E4E4'
