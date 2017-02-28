@@ -7,53 +7,8 @@
         <title>Michael Hansen</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            //Load in the data for the google line chart then call drawChart()
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-
-            //Leaving these variables outside the function will allow us to access them later for toggling
-            var Mdata, Moptions, Mchart, view;
-            var rgdpToggle = true, unrateToggle = true;
-
-            //This is the main build function for the google chart
-            function drawChart() {
-                //here we create the data to be used and the view to be presented to the user
-                Mdata = google.visualization.arrayToDataTable(chartMaterial);
-                view = new google.visualization.DataView(Mdata);
-
-                //Settings such as borders, fonts, and colors for the graph, labels, and axes go here.
-                Moptions = {
-                    title: 'Real Gross Domestic Product "RGDP" and Unemployment rate over the last 10 years',
-                    legend: { position: 'bottom' },
-                    vAxis: { format: '#,###%' },
-                    backgroundColor: '#E4E4E4'
-                };
-
-                //This creates our chart and points it to the div with the id: 'Mixed_Chart'
-                Mchart = new google.visualization.LineChart(document.getElementById('Mixed_Chart'));
-                Mchart.draw(Mdata, Moptions);
-            }
-
-            //this function toggle the graph by looking at a series of flags, this system has three toggles:
-            // Show All (Starting Default), Show RGDP, and Show Unemployment Rate (cycling in that order)
-            function toggleGraph() {
-                if (unrateToggle) {
-                        view.setColumns([0, 1]);
-                        unrateToggle = false;
-                    } else if (rgdpToggle) {
-                        view.setColumns([0, 2]);
-                        rgdpToggle = false;
-                    } else {
-                        view.setColumns([0, 1, 2]);
-                        rgdpToggle = true;
-                        unrateToggle = true;
-                    }
-             //Once we have selected the columns to be set, we place the new view into the draw function with our previous options
-                    Mchart.draw(view, Moptions);
-            }
-        </script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="Scripts/googleChart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
     <style>
@@ -73,12 +28,18 @@
         }
     </style>
     <body>
-        <h1>iQcu Programmer Challenge
-        <br />Michael Hansen</h1>
-        <p>    <strong>Summary of work performed:</strong> I pulled the the data for the graph from the remote server at St. Louis using their FRED API. 
-        Once I pulled in the data, I converted it (into JSON) and then stored the sections I needed and discarded the rest. 
-        Finally, the data was uploaded into a Google Line Graph. The graph is able to toggle the data by selecting which sections are to be shown based on a set of flags. 
-        For a more technical view please view the comments in the HTML file. </p>
+        <h1>Web Development Knowledge
+        <br />Michael L Hansen</h1>
+        <p>    <strong>Summary of work performed:</strong> I pulled the the data for the graph from the remote server at
+            St. Louis using their FRED API.Once I pulled in the data, I converted it (into JSON) and then stored the
+            sections I needed and discarded the rest. Finally, the data was uploaded into a Google Line Graph. The graph
+            is able to toggle the data by selecting which sections are to be shown based on a set of flags. For a more
+            technical view please view the comments in the
+            <a href="https://github.com/MichaelLHansen/MichaelLHansen.github.io/blob/master/index.html" target="_blank">index.html</a>
+            file and
+            <a href="https://github.com/MichaelLHansen/MichaelLHansen.github.io/blob/master/Scripts/FRED.js" target="_blank">FRED.js</a>
+            file. </p>
+
         <script src="Scripts/FRED.js"></script>
         <script>
             //Just some code to collapse the graph's div container
@@ -93,8 +54,8 @@
         <div style="height:2px;"></div>
         <div id="Mixed_Chart"></div>
         <p style="width:300px;">Links to resources: <br />
-        <a href="https://developer.yahoo.com/yql/console/">YQL Console for Encoding</a>
-        <br /><a href="https://developers.google.com/chart/interactive/docs/gallery/linechart">Google Line Charts Docs</a>
-        <br /><a href="https://research.stlouisfed.org/docs/api/fred/">FRED API Docs</a></p>
+        <a href="https://developer.yahoo.com/yql/console/" target="_blank">YQL Console for Encoding</a>
+        <br /><a href="https://developers.google.com/chart/interactive/docs/gallery/linechart" target="_blank">Google Line Charts Docs</a>
+        <br /><a href="https://research.stlouisfed.org/docs/api/fred/" target="_blank">FRED API Docs</a></p>
     </body>
 </html>
