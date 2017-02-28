@@ -18,6 +18,14 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+
+#Mixed_Chart{
+    margin-bottom: 10px;
+}
+
+#FRED_Links{
+    margin-bottom: 20px;
+}
 * {box-sizing:border-box}
 
 /* Slideshow container */

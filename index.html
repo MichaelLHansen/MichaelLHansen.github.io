@@ -15,7 +15,7 @@
         <script src="Scripts/googleChart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
-    <body>
+    <body style="margin-left: 5%; margin-right: 5%">
         <h1>Web Development Knowledge
         <br />Michael L Hansen</h1>
         <div style="margin-bottom: 10px;">
@@ -111,7 +111,7 @@
             </a>
         </div> <!-- Carousel -->
         <br>
-        <p>    <strong>Summary:</strong> I pulled the the data for the graph from the remote server at
+        <p>    <strong>FRED API Summary:</strong> I pulled the the data for the graph from the remote server at
             St. Louis using their FRED API.Once I pulled in the data, I converted it into JSON and then stored the
             sections I needed and discarded the rest. Finally, the data was uploaded into a Google Line Graph. The graph
             is able to toggle the data by selecting which sections are to be shown based on a set of flags. For a more
@@ -136,14 +136,12 @@
         <button onclick="toggleGraph()">Toggle Series</button>
         <div style="height:2px;"></div>
         <div id="Mixed_Chart"></div>
-        <p style="width:300px;">Links to resources: <br />
+        <p id="FRED_Links" style="width:300px;">Links to resources: <br />
         <a href="https://developer.yahoo.com/yql/console/" target="_blank">YQL Console for Encoding</a>
         <br /><a href="https://developers.google.com/chart/interactive/docs/gallery/linechart" target="_blank">Google Line Charts Docs</a>
         <br /><a href="https://research.stlouisfed.org/docs/api/fred/" target="_blank">FRED API Docs</a></p>
     </body>
     <!-- Bootstrap Loaders -->
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
