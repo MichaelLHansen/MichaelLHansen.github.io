@@ -1,3 +1,12 @@
+#nav ul {
+    list-style-type: none;
+    font-size: 18px;
+}
+
+#nav li {
+    display: inline;
+    padding: 20px;
+}
 p {
     border: 1px solid powderblue;
     font-family: Georgia, serfif;
@@ -26,6 +35,9 @@ img {
 #FRED_Links{
     margin-bottom: 20px;
 }
+
+
+
 * {box-sizing:border-box}
 
 /* Slideshow container */
@@ -95,8 +107,8 @@ img {
 /* The dots/bullets/indicators */
 .dot {
     cursor:pointer;
-    height: 13px;
-    width: 13px;
+    height: 20px;
+    width: 20px;
     margin: 0 2px;
     background-color: #333;
     border-radius: 50%;
