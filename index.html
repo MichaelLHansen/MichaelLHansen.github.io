@@ -14,6 +14,7 @@
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="Scripts/googleChart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body background="Images/Background.png" style="margin-left: 5%; margin-right: 5%;">
         <div id="nav">
@@ -26,7 +27,7 @@
         </div>
         
         <h1>Web Development Knowledge</h1>
-        <h2 style="align-self: center;">Michael L. Hansen</h2>
+        <h2>Michael L. Hansen</h2>
         <div id="JamaText" >
             <p>
                 <strong>Jama Capstone Project: overView</strong> <br>
@@ -40,8 +41,7 @@
             </p>
         </div>
 
-        <div style="height: 650px; width: 100%; margin-bottom: 50px;" id="carousel-overView" class="carousel slide" data-ride="carousel" data-interval="4000">
-            <!-- Indicators -->
+        <div id="carousel-overView" class="carousel slide" data-ride="carousel" data-interval="4000">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-overView" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-overView" data-slide-to="1"></li>
@@ -53,58 +53,57 @@
                 <li data-target="#carousel-overView" data-slide-to="7"></li>
                 <li data-target="#carousel-overView" data-slide-to="8"></li>
             </ol>
-            <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img style="height: 550px; width: 100%;" src="Images/OV1.JPG" alt="...">
+                    <img src="Images/OV1.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>overView Login Page</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV2.JPG" alt="...">
+                    <img src="Images/OV2.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>overView Project Selection</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV3.JPG" alt="...">
+                    <img src="Images/OV3.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>overView Root Item Selection</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV5.JPG" alt="...">
+                    <img src="Images/OV5.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Simple overView Graph with Curved Edges</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV6.JPG" alt="...">
+                    <img src="Images/OV6.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Simple overView Graph with Straight Edges</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV7.JPG" alt="...">
+                    <img src="Images/OV7.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Complex overView Graph with Highlighted Segments</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV8.JPG" alt="...">
+                    <img src="Images/OV8.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Complex overView Graph with Collapsed Nodes</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV9.JPG" alt="...">
+                    <img src="Images/OV9.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Simple Graph with Hovered Suspect Edge Tooltip</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 550px; width: 100%;" src="Images/OV10.JPG" alt="...">
+                    <img src="Images/OV10.JPG" alt="...">
                     <div class="carousel-caption">
                         <h3>Simple Graph with Hovered Node Tooltip</h3>
                     </div>
@@ -145,12 +144,10 @@
         <button onclick="toggleGraph()">Toggle Series</button>
         <div style="height:2px;"></div>
         <div id="Mixed_Chart"></div>
-        <p id="FRED_Links" style="width:300px;">Links to resources: <br />
+        <p id="FRED_Links">Links to resources: <br />
         <a href="https://developer.yahoo.com/yql/console/" target="_blank">YQL Console for Encoding</a>
         <br /><a href="https://developers.google.com/chart/interactive/docs/gallery/linechart" target="_blank">Google Line Charts Docs</a>
         <br /><a href="https://research.stlouisfed.org/docs/api/fred/" target="_blank">FRED API Docs</a></p>
     </body>
-    <!-- Bootstrap Loaders -->
-    <!-- jQuery library -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 </html>

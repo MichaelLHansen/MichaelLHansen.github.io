@@ -11,13 +11,13 @@
 
 #JamaText {
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
 
 }
 
 #FredText {
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
 
 }
 
@@ -31,6 +31,10 @@ h1 {
     font-family: Georgia, serif;
     font-style: italic;
     text-align: center;
+}
+
+h2{
+    align-self: center;
 }
 
 h3{
@@ -48,7 +52,14 @@ img {
 
 #FRED_Links {
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 20%;
+}
+
+#carousel-overView {
+    height: 650px; 
+    width: 100%; 
+    margin-bottom: 50px;
 }
 
 
@@ -71,6 +82,10 @@ img {
     display: none;
 }
 
+.item img {
+    height: 550px; 
+    width: 100%;
+}
 /* Next & previous buttons */
 .prev, .next {
     cursor: pointer;
@@ -133,11 +148,15 @@ img {
 
 .carousel-indicators li {
     background-color: #999;
-    background-color: rgba(70,70,70,.25);
+    background-color: rgba(255,0,0,.5);
+    width: 20px;
+    height: 20px;
 }
 
 .carousel-indicators .active {
-    background-color: #444;
+    background-color: rgba(10,255,10,.5);
+    width: 23px;
+    height: 23px;
 }
 
 
