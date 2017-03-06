@@ -15,7 +15,7 @@
         <script src="Scripts/googleChart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
-    <body style="margin-left: 5%; margin-right: 5%;">
+    <body background="Images/Background.png" style="margin-left: 5%; margin-right: 5%;">
         <div id="nav">
             <ul>
                 <li><a target="_blank" href="https://github.com/MichaelLHansen">My GitHub</a></li>
@@ -27,7 +27,7 @@
         
         <h1>Web Development Knowledge</h1>
         <h2 style="align-self: center;">Michael L. Hansen</h2>
-        <div style="margin-bottom: 10px;">
+        <div id="JamaText" >
             <p>
                 <strong>Jama Capstone Project: overView</strong> <br>
                 Working with a team of 6 others, the project for Jama was designed to show a traceability graph of all
@@ -118,9 +118,9 @@
             <a class="right carousel-control" href="#carousel-overView" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
-        </div> <!-- Carousel -->
+        </div>
         <br>
-        <p>    <strong>FRED API Summary:</strong> I pulled the the data for the graph from the remote server at
+        <div id="FredText"><p>    <strong>FRED API Summary:</strong> I pulled the the data for the graph from the remote server at
             St. Louis using their FRED API.Once I pulled in the data, I converted it into JSON and then stored the
             sections I needed and discarded the rest. Finally, the data was uploaded into a Google Line Graph. The graph
             is able to toggle the data by selecting which sections are to be shown based on a set of flags. For a more
@@ -128,7 +128,7 @@
             <a href="https://github.com/MichaelLHansen/MichaelLHansen.github.io/blob/master/index.html" target="_blank">index.html</a>
             file and
             <a href="https://github.com/MichaelLHansen/MichaelLHansen.github.io/blob/master/Scripts/FRED.js" target="_blank">FRED.js</a>
-            file. </p>
+            file. </p></div>
 
         <script src="Scripts/FRED.js">
             //Script to pull in data from the Federal Reserve Economic Data (FRED) API and read it into arrays

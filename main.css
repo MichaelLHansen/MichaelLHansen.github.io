@@ -1,19 +1,33 @@
 #nav ul {
     list-style-type: none;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 #nav li {
     display: inline;
     padding: 20px;
 }
+
+#JamaText {
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+#FredText {
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}
+
 p {
     border: 1px solid powderblue;
     font-family: Georgia, serfif;
     font-size: 14pt;
 
 }
-h1{
+h1 {
     font-family: Georgia, serif;
     font-style: italic;
     text-align: center;
@@ -28,12 +42,13 @@ img {
     max-height: 100%;
 }
 
-#Mixed_Chart{
+#Mixed_Chart {
     margin-bottom: 10px;
 }
 
-#FRED_Links{
+#FRED_Links {
     margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 
