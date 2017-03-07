@@ -9,6 +9,26 @@
     padding: 20px;
 }
 
+.NavTable{
+	display: table;
+	width: 100%;
+}
+
+.NavTableBody {
+	display: table-row-group;
+}
+
+.NavTableRow {
+	display: table-row;
+    background-color:  rgba(255, 255, 255, 0.4);
+}
+
+.NavTableCell {
+    text-align: center;
+    font-size: 24px;
+	display: table-cell;
+}
+
 .carousel-caption{
     bottom:-35px;
 }
