@@ -9,6 +9,10 @@
     padding: 20px;
 }
 
+.carousel-caption{
+    bottom:-35px;
+}
+
 #Carousel-JamaText-Wrapper{
     overflow: hidden;
     width: 100%;
